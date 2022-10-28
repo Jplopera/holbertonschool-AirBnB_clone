@@ -27,7 +27,7 @@ class BaseModel:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.datetime.now()
             self.updated_at = self.created_at
-            models.storage.new(self)
+        models.storage.new(self)
 
     def __str__(self):
         """__str__ method that returns a string"""
