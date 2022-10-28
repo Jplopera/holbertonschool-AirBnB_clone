@@ -9,7 +9,7 @@ import models
 class HBNBCommand(cmd.Cmd):
     """This class that contains the entry point of the command interpreter"""
     prompt ='(hbnb) '
-    clasess = ['BaseModels']
+    clasess = ['BaseModel']
 
     def do_quit(self, arg):
         """Quit command"""
@@ -28,7 +28,7 @@ class HBNBCommand(cmd.Cmd):
         """ Creates a new instance of BaseModel, saves it"""
         if arg == "" or arg is None:
             print("** class name missing **")
-        elif arg not in self.classes:
+        elif arg not in self.clasess:
             print("** class doesn't exist **")
         else:
             new_obj = eval(arg)()
@@ -42,7 +42,7 @@ class HBNBCommand(cmd.Cmd):
             return
 
         args = arg.split()
-        if args[0] not in self.class_list:
+        if args[0] not in self.clasess:
             print("** class doesn't exist **")
             return
 
@@ -63,7 +63,7 @@ class HBNBCommand(cmd.Cmd):
         """Deletes an instance based on the class name and id"""
         if arg:
             arg = arg.split()
-            if arg[0] not in self.list_className:
+            if arg[0] not in self.clasess:
                 print("** class doesn't exist **")
             elif len(arg) < 2:
                 print("** instance id missing **")
@@ -89,7 +89,7 @@ class HBNBCommand(cmd.Cmd):
             for key in all_objs:
                 objs_list.append(all_objs[key].__str__())
             print(objs_list)
-        elif args[0] in self.class_list:
+        elif args[0] in self.clasess:
             for key in all_objs:
                 if all_objs[key].__class__.__name__ == args[0]:
                     objs_list.append(all_objs[key].__str__())
@@ -112,7 +112,7 @@ class HBNBCommand(cmd.Cmd):
         if len(args) == 3:
             print("** value missing **")
             return
-        if args[0] not in HBNBCommand.valid_classes:
+        if args[0] not in HBNBCommand.clasess:
             print("** class doesn't exist **")
             return
         all_objs = models.storage.all()
