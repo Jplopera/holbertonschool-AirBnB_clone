@@ -32,6 +32,8 @@ class TestBase(unittest.TestCase):
         self.assertIn('id', b2)
         self.assertIn('created_at', b2)
         self.assertIn('updated_at', b2)
+        str1 = f"[b1]] ({b1.id}) {b1.__dict__}"
+        self.assertEqual(str1, str(b1))
 
 
 if __name__ == '__main__':
