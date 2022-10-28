@@ -14,3 +14,6 @@ class TestBase(unittest.TestCase):
         b_1 = BaseModel()
         b_1.save()
         self.assertFalse(b_1.created_at == b_1.updated_at)
+
+if __name__ == '__main__':
+    unittest.main()
