@@ -24,5 +24,15 @@ class TestBase(unittest.TestCase):
         b2 = b1.to_dict()
         self.assertEqual(b2["name"], b1.name)
 
+    def test_str(self):
+        """test method __str__"""
+
+        b1 = BaseModel()
+        b2 = b1.to_dict()
+        self.assertIn('id', b2)
+        self.assertIn('created_at', b2)
+        self.assertIn('updated_at', b2)
+
+
 if __name__ == '__main__':
     unittest.main()
