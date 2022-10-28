@@ -37,4 +37,4 @@ class FileStorage:
                 str1 = f.read()
 
                 fromjson = json.loads(str1)
-                FileStorage.__objects = {key: eval(f"{val['__class__']})(**{val})") for key, val in fromjson.items()}
+                FileStorage.__objects = {key: eval(f"{val['__class__']}(**{val})") for key, val in fromjson.items()}
