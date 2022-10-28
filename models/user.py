@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Module contains the User class inheritet from class BaseModel"""
 from models.base_model import BaseModel
+import models
 
 
 class User(BaseModel):
