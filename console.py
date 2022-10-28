@@ -4,12 +4,13 @@
 
 import cmd
 import models
+from models.base_model import BaseModel
 
 
 class HBNBCommand(cmd.Cmd):
     """This class that contains the entry point of the command interpreter"""
     prompt ='(hbnb) '
-    clasess = ['BaseModel']
+    clasess = {"BaseModel": BaseModel}
 
     def do_quit(self, arg):
         """Quit command"""
@@ -99,26 +100,26 @@ class HBNBCommand(cmd.Cmd):
 
     def do_update(self, arg):
         """Updates an instance based on the class name and id"""
-        args = args.split()
-        if len(args) == 0:
+        arg = arg.split()
+        if len(arg) == 0:
             print("** class name missing **")
             return
-        if len(args) == 1:
+        if len(arg) == 1:
             print("** instance id missing **")
             return
-        if len(args) == 2:
+        if len(arg) == 2:
             print("** attribute name missing **")
             return
-        if len(args) == 3:
+        if len(arg) == 3:
             print("** value missing **")
             return
-        if args[0] not in HBNBCommand.clasess:
+        if arg[0] not in HBNBCommand.clasess:
             print("** class doesn't exist **")
             return
         all_objs = models.storage.all()
         for obj_id in all_objs.keys():
-            if obj_id == args[1]:
-                setattr(all_objs[obj_id], args[2], args[3])
+            if obj_id == arg[1]:
+                setattr(all_objs[obj_id], arg[2], arg[3])
                 models.storage.save()
                 return
         print("** no instance found **")
