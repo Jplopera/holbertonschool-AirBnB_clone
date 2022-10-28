@@ -10,10 +10,11 @@ class TestBase(unittest.TestCase):
     """Test Cases for the BaseModel class."""
 
     def test_save(self):
-        """Test methot save"""
-        b_1 = BaseModel()
-        b_1.save()
-        self.assertFalse(b_1.created_at == b_1.updated_at)
+        """Test method save"""
+
+        b1 = BaseModel()
+        b1.save()
+        self.assertFalse(b1.created_at == b1.updated_at)
 
 if __name__ == '__main__':
     unittest.main()
